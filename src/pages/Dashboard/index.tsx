@@ -20,6 +20,7 @@ import {
   ProductPrice,
   ProductButton,
 } from './styles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface Product {
   id: string;
@@ -36,6 +37,8 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadProducts(): Promise<void> {
       // TODO
+      const products = await api.get('/products');
+      setProducts(products.data);
     }
 
     loadProducts();
@@ -43,6 +46,7 @@ const Dashboard: React.FC = () => {
 
   function handleAddToCart(item: Product): void {
     // TODO
+    addToCart(item);
   }
 
   return (
